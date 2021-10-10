@@ -19,7 +19,20 @@ Default region name [None]: sa-east-1
 Default output format [None]: json
 ```
 Criando uma fila:
-
 ```
 aws --endpoint-url=http://localhost:4566 sqs create-queue --queue-name fila_dados
+```
+
+Criando uma stack:
+```
+aws cloudformation create-stack --stack-name jsonstack --template-body file://resource.yml --region sa-east-1 --endpoint-url http://localhost:4566
+```
+
+Listando tabelas do dynamodb:
+```
+aws dynamodb list-tables --endpoint-url http://localhost:4566
+```
+Listando os dados do banco:
+```
+aws dynamodb scan --table-name posts --endpoint-url http://localhost:4566
 ```
