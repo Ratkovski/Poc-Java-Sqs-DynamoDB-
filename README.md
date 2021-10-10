@@ -36,3 +36,7 @@ Listando os dados do banco:
 ```
 aws dynamodb scan --table-name posts --endpoint-url http://localhost:4566
 ```
+Exemplo de requisição: GET:
+```
+http://localhost:8081/posts/1
+```
