@@ -13,6 +13,4 @@ public class JsonDto {
     private String title;
     @JsonProperty
     private String body;
-
-
 }
