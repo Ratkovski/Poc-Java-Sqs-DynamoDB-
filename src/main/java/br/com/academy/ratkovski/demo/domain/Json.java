@@ -1,12 +1,13 @@
 package br.com.academy.ratkovski.demo.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
+import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 
-@Data
-@AllArgsConstructor
+@Getter
+@Setter
+//@NoArgsConstructor
 public class Json implements Serializable {
 
     private static final long serialVersionUID = 7833604624484844109L;
