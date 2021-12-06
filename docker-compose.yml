@@ -24,3 +24,35 @@ services:
       - "${TMPDIR:-/tmp}/localstack:/tmp/localstack"
       - "/var/run/docker.sock:/var/run/docker.sock"
 
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    network_mode: bridge
+    user: "1001"
+    environment:
+      - GF_INSTALL_PLUGINS=alexanderzobnin-zabbix-app
+    volumes:
+      - ./data/grafana/data:/var/lib/grafana
+    ports:
+      - 3000:3000
+    depends_on:
+      - prometheus
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./alert.rules:/etc/prometheus/alert.rules
+    ports:
+      - 9090:9090
+
+  ratkovski:
+    build:
+      dockerfile: ./Dockerfile
+      context: .
+    image: ratkovski
+    container_name: ratkovski
+    ports:
+      # - 8082:8081
+      - 8080:8080
